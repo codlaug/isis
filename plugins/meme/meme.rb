@@ -2,12 +2,21 @@ require 'cgi'
 
 class Meme < Isis::Plugin::Base
 
+  TRIGGERS = %w{!aliens !allthe !grumpycat !dwight}
+
+  TRIGGER_TO_IMAGE_URL = {
+    '!aliens': 'http://v1.memecaptain.com/aliens.jpg',
+    '!allthe': 'http://v1.memecaptain.com/all_the_things.jpg',
+    '!grumpycat': 'http://i2.kym-cdn.com/photos/images/newsfeed/000/406/325/b31.jpg',
+    '!dwight': 'http://v1.memecaptain.com/dwight_schrute.jpg',
+  }
+
   def respond_to_msg?(msg, speaker)
-    args = msg.split(';')
-    if args[0].split[0] == '!meme'
-      @meme = args[0].split[1]
-      @line1 = args[1]
-      @line2 = args[2]
+    if TRIGGERS.include? msg.split[0]
+      @meme = msg.split[0]
+      remainder = msg.split[1..-1].join(' ').split(';')
+      @line1 = remainder[0]
+      @line2 = remainder[1]
       return true
     else
       return false
@@ -25,11 +34,7 @@ class Meme < Isis::Plugin::Base
   end
 
   def get_meme_url
-    if @meme.starts_with?('http')
-      image_url = @meme
-    else
-      image_url = "http://memecaptain.com/#{@meme}.jpg"
-    end
+    image_url = TRIGGER_TO_IMAGE_URL[@meme]
 
     meme_url = "http://v1.memecaptain.com/i?u=#{image_url}&tt=#{CGI.escape(@line1.strip)}"
     meme_url += "&tb=#{CGI.escape(@line2.strip)}" if @line2
