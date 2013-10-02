@@ -3,7 +3,7 @@ require 'open-uri'
 
 class Blame < Isis::Plugin::Base
 
-  BLAME_LIST = %w(Tony
+  BLAME_LIST = %q[Tony
     C2
     C3
     Kevin
@@ -38,19 +38,19 @@ class Blame < Isis::Plugin::Base
     Accidentally shooting April in the face
     OS X running in 32 bit mode
     news-HUNGER-THUMB-250.jpg
-    susy 1.0.[6|7]
+    susy 1.0.7
     Poltergeist
-    Timed out waiting for response to {"name":"visit","args":["http://127.0.0.1:52292/glee/articles/glee-2013-scheduled-article"]}
+    Timed out waiting for response to {"name":"visit","args":"http://127.0.0.1:52292/glee/articles/glee-2013-scheduled-article"}
     PostingError: OAuthException :: An unexpected error has occurred. Please retry your request later.
     Tony being in charge of the blame list
     GumGum
     JWPlayer
     Becca's iPhone
-    The Disembodied Unicorn Piñata Head
+    The Disembodied Unicorn Pinata Head
     HipChat
     Townsquare Media
     Sites to Topics migration
-    Genesis Media <img src="http://www.genesismedia.com/images/about-richard.jpg"/>)
+    Genesis Media <img src="http://www.genesismedia.com/images/about-richard.jpg"/>]
 
   def respond_to_msg?(msg, speaker)
     msg.downcase == '!blame'
