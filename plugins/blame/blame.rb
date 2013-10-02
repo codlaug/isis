@@ -8,7 +8,9 @@ class Blame < Isis::Plugin::Base
   LIST = {
     blame: YAML.load(File.read(File.join ROOT_FOLDER, 'plugins', 'blame', 'blame.yml')),
     disapprove: YAML.load(File.read(File.join ROOT_FOLDER, 'plugins', 'blame', 'disapprove.yml')),
-    jerkins: YAML.load(File.read(File.join ROOT_FOLDER, 'plugins', 'blame', 'jerkins.yml'))
+    jerkins: YAML.load(File.read(File.join ROOT_FOLDER, 'plugins', 'blame', 'jerkins.yml')),
+    honeybadger: YAML.load(File.read(File.join ROOT_FOLDER, 'plugins', 'blame', 'honeybadger.yml')),
+    rage: YAML.load(File.read(File.join ROOT_FOLDER, 'plugins', 'blame', 'rage.yml'))
     }
 
   def respond_to_msg?(msg, speaker)
