@@ -1,6 +1,3 @@
-# clientsfromhell.rb
-# Random story from clientsfromhell.net
-
 require 'nokogiri'
 require 'open-uri'
 
