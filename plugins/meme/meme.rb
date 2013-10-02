@@ -8,7 +8,7 @@ class Meme < Isis::Plugin::Base
     '!aliens': 'http://v1.memecaptain.com/aliens.jpg',
     '!allthe': 'http://v1.memecaptain.com/all_the_things.jpg',
     '!grumpycat': 'http://i2.kym-cdn.com/photos/images/newsfeed/000/406/325/b31.jpg',
-    '!dwight': 'http://v1.memecaptain.com/dwight_schrute.jpg',
+    '!dwight': 'http://v1.memecaptain.com/dwight_schrute.jpg'
   }
 
   def respond_to_msg?(msg, speaker)
