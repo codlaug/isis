@@ -16,9 +16,9 @@ class Meme < Isis::Plugin::Base
 
   private
 
-  def response_html
-    "<img src=\"#{get_meme_url}\"/>"
-  end
+  # def response_html
+  #   "<img src=\"#{get_meme_url}\"/>"
+  # end
 
   def response_text
     get_meme_url
@@ -30,9 +30,9 @@ class Meme < Isis::Plugin::Base
     else
       image_url = "http://memecaptain.com/#{@meme}.jpg"
     end
-    
+
     meme_url = "http://v1.memecaptain.com/i?u=#{image_url}&tt=#{CGI.escape(@line1.strip)}"
-    meme_url += "$tb=#{CGI.escape(@line2.strip)}" if @line2
+    meme_url += "&tb=#{CGI.escape(@line2.strip)}" if @line2
 
     meme_url
   end
