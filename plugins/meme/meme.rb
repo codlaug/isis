@@ -3,11 +3,11 @@ require 'cgi'
 class Meme < Isis::Plugin::Base
 
   def respond_to_msg?(msg, speaker)
-    args = msg.split
-    if args[0] == '!meme'
-      @meme = args[1]
-      @line1 = args[2].split(';')[0]
-      @line2 = args[2].split(';')[1]
+    args = msg.split(';')
+    if args[0].split[0] == '!meme'
+      @meme = args[0].split[1]
+      @line1 = args[1]
+      @line2 = args[2]
       return true
     else
       return false
