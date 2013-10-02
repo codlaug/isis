@@ -2,14 +2,15 @@ require 'cgi'
 
 class Meme < Isis::Plugin::Base
 
-  TRIGGERS = %w{!aliens !allthe !grumpycat !dwight}
-
   TRIGGER_TO_IMAGE_URL = {
     '!aliens' => 'http://v1.memecaptain.com/aliens.jpg',
     '!allthe' => 'http://v1.memecaptain.com/all_the_things.jpg',
     '!grumpycat' => 'http://i2.kym-cdn.com/photos/images/newsfeed/000/406/325/b31.jpg',
-    '!dwight' => 'http://v1.memecaptain.com/dwight_schrute.jpg'
+    '!dwight' => 'http://v1.memecaptain.com/dwight_schrute.jpg',
+    '!fry' => 'http://i0.kym-cdn.com/photos/images/original/000/131/399/fry.PNG?1307468855'
   }
+
+  TRIGGERS = TRIGGER_TO_IMAGE_URL.keys
 
   def respond_to_msg?(msg, speaker)
     if TRIGGERS.include? msg.split[0]
