@@ -3,7 +3,7 @@ require 'open-uri'
 
 class Blame < Isis::Plugin::Base
 
-  TRIGGERS = %w{!blame !disapprove}
+  TRIGGERS = %w{!blame !disapprove !jerkins !honeybadger !rage}
 
   LIST = {
     blame: YAML.load(File.read(File.join ROOT_FOLDER, 'plugins', 'blame', 'blame.yml')),
