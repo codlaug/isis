@@ -3,10 +3,12 @@ require 'open-uri'
 
 class Blame < Isis::Plugin::Base
 
-  TRIGGERS = %w{!blame}
+  TRIGGERS = %w{!blame !disapprove}
 
   LIST = {
-    blame: YAML.load(File.read(File.join ROOT_FOLDER, 'plugins', 'blame', 'blame.yml'))
+    blame: YAML.load(File.read(File.join ROOT_FOLDER, 'plugins', 'blame', 'blame.yml')),
+    disapprove: YAML.load(File.read(File.join ROOT_FOLDER, 'plugins', 'blame', 'disapprove.yml')),
+    jerkins: YAML.load(File.read(File.join ROOT_FOLDER, 'plugins', 'blame', 'jerkins.yml'))
     }
 
   def respond_to_msg?(msg, speaker)
