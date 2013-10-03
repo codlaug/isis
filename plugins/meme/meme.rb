@@ -7,7 +7,9 @@ class Meme < Isis::Plugin::Base
     '!allthe' => 'http://v1.memecaptain.com/all_the_things.jpg',
     '!grumpycat' => 'http://i2.kym-cdn.com/photos/images/newsfeed/000/406/325/b31.jpg',
     '!dwight' => 'http://v1.memecaptain.com/dwight_schrute.jpg',
-    '!fry' => 'http://i0.kym-cdn.com/photos/images/original/000/131/399/fry.PNG?1307468855'
+    '!fry' => 'http://i0.kym-cdn.com/photos/images/original/000/131/399/fry.PNG?1307468855',
+    '!tyson' => 'http://i2.kym-cdn.com/photos/images/original/000/198/020/BRTky.jpg',
+    '!bees' => 'http://img.gawkerassets.com/img/17fxr90k1uawbgif/original.gif'
   }
 
   TRIGGERS = TRIGGER_TO_IMAGE_URL.keys
@@ -37,8 +39,12 @@ class Meme < Isis::Plugin::Base
   def get_meme_url
     image_url = TRIGGER_TO_IMAGE_URL[@meme]
 
-    meme_url = "http://v1.memecaptain.com/i?u=#{image_url}&tt=#{CGI.escape(@line1.strip)}"
-    meme_url += "&tb=#{CGI.escape(@line2.strip)}" if @line2
+    if @line1
+      meme_url = "http://v1.memecaptain.com/i?u=#{image_url}&tt=#{CGI.escape(@line1.strip)}"
+      meme_url += "&tb=#{CGI.escape(@line2.strip)}" if @line2
+    else
+      meme_url = image_url
+    end
 
     meme_url
   end
